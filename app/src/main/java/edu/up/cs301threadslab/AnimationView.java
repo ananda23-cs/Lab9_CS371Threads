@@ -80,12 +80,6 @@ public class AnimationView extends SurfaceView{
         for(Animation anim : anims) {
             anim.draw(canvas);
         }
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        postInvalidate();
     }//draw
 
     /** This method is called each time the seekbar's progress changes.  This will always be a
