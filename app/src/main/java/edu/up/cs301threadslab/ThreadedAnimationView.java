@@ -12,7 +12,7 @@ public class ThreadedAnimationView extends Thread implements Runnable {
         while(true){
             this.myView.postInvalidate();
             try {
-                sleep(3000);
+                sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
