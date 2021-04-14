@@ -24,6 +24,8 @@ public class StarAnimation extends Animation {
     /** ctor expects to be told the size of the animation canvas */
     public StarAnimation(int initWidth, int initHeight) {
         super(initWidth, initHeight);
+        StarAddRemoveThreadAnimation addRemoveThreadAnimation = new StarAddRemoveThreadAnimation(this);
+        addRemoveThreadAnimation.start();
     }
 
     /** whenever the canvas size changes, generate new stars */
@@ -75,12 +77,14 @@ public class StarAnimation extends Animation {
     @Override
     public void progressChange(int newProgress) {
         newProgress = newProgress * 10;
-        if(field.size() >= 100 && field.size() <= 1000){
-            for(int i = 0; i < Math.abs(newProgress-field.size()); i++){
-                if(newProgress-field.size()>0){
+        for(int i = 0; i < Math.abs(newProgress-field.size()); i++){
+            if(newProgress-field.size()>0){
+                if(field.size() >= 100) {
                     addStar();
                 }
-                else if(newProgress-field.size() < 0){
+            }
+            else if(newProgress-field.size() < 0){
+                if(field.size() <= 1000) {
                     removeStar();
                 }
             }
