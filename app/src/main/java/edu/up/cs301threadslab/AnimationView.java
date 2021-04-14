@@ -80,6 +80,11 @@ public class AnimationView extends SurfaceView{
         for(Animation anim : anims) {
             anim.draw(canvas);
         }
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         postInvalidate();
     }//draw
 
