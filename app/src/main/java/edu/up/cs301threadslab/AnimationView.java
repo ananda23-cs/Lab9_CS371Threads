@@ -77,8 +77,10 @@ public class AnimationView extends SurfaceView{
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
-        for(Animation anim : anims) {
-            anim.draw(canvas);
+        synchronized (anims) {
+            for (Animation anim : anims) {
+                anim.draw(canvas);
+            }
         }
     }//draw
 
